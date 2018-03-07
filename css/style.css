@@ -8,7 +8,7 @@
 @charset "UTF-8";
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
@@ -2831,7 +2831,7 @@ header.navbar {
     padding: 0.5rem 1rem;
     margin-right: 0;
     background-color: #fff;
-    background-image: url("../img/logo.png");
+    background-image: url("../img/WYD_logo_acronym.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 80px auto;
@@ -3797,7 +3797,9 @@ button.close {
 .modal-body {
   position: relative;
   flex: 1 1 auto;
-  padding: 15px; }
+  padding: 15px;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto; }
 
 .modal-footer {
   display: flex;
@@ -11033,7 +11035,7 @@ app-root {
     height: calc(100vh - 2.375rem - 55px); }
 
 .aside-menu-fixed .main, .aside-menu-fixed .app-footer {
-  margin-right: 250px; }
+  margin-right: 0px; } /* Was 250 */
 
 .aside-menu-fixed.aside-menu-hidden .main, .aside-menu-fixed.aside-menu-hidden .app-footer {
   margin-right: 0; }
@@ -11158,6 +11160,9 @@ app-root {
       text-transform: uppercase; }
     .sidebar .nav .divider {
       height: 10px; }
+    .sidebar .nav .nav-dropdown .nav-dropdown-items {
+        margin-left: 20px;
+    }
     .sidebar .nav .nav-item {
       position: relative;
       margin: 0;
@@ -13578,7 +13583,7 @@ base-chart.chart {
   color: #d1d4d7; }
 
 .sidebar .sidebar-header {
-  height: 200px;
+  height: 75px;
   padding-bottom: 10px;
   text-align: center;
   background: rgba(0, 0, 0, 0.2); }
@@ -13599,7 +13604,7 @@ base-chart.chart {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 55px - 200px) !important; }
+  height: calc(100vh - 55px) !important; } /* Took out "- 200px" */
 
 @media (min-width: 576px) {
   .sidebar-compact .sidebar .sidebar-header {

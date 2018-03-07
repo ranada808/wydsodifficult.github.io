@@ -1,0 +1,178 @@
+<!--
+ * WYD - blank.html template
+ * @version v0.17.05.31
+ * Copyright (c) 2017 WYD
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="WYD - What'd You Do?">
+    <meta name="author" content="Higashi">
+    <meta name="keyword" content="WYD, What'd You Do?, Whatd You Do">
+    <link rel="shortcut icon" href="img/WYD_logo.png">
+
+    <title>WYD-Create Profile</title>
+
+    <!-- Icons -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="js/fbinit.js"></script>
+
+</head>
+
+<body class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-2">
+                    <div class="card-block p-2">
+                        <h1>Company Information</h1>
+                        <p class="text-muted">Setup The Information That All Your Employees Will See!
+                        <br>
+                        All Fields Must Be Filled In To Continue!</p>
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                            <input id="name-input" type="text" class="form-control" placeholder="Company Name">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-map"></i></span>
+                            <input id="address-input" type="text" class="form-control" placeholder="Address">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-phone"></i></span>
+                            <input id="contact-input" type="telephone" class="form-control" placeholder="Contact #">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-printer"></i></span>
+                            <input id="fax-input" type="telephone" class="form-control" placeholder="Fax #">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-globe"></i></span>
+                            <input id="website-input" type="url" class="form-control" placeholder="Website Address">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-cup"></i></span>
+                            <input id="lunch-input" type="number" class="form-control" placeholder="Standard Lunch Length (minutes)">
+                        </div>
+                    </div>
+                </div>
+                <div class="card mx-2">
+                    <div class="card-block p-2">
+                        <h1>Company Profile</h1>
+                        <p class="text-muted">Setup The Main Profile!
+                        <br>
+                        All Fields Must Be Filled In To Continue!</p>
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                            <input id="first-input" type="text" class="form-control" placeholder="First Name">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                            <input id="last-input" type="text" class="form-control" placeholder="Last Name">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                            <input id="full-input" type="text" class="form-control" placeholder="Full Name">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                            <input id="initials-input" type="text" class="form-control" placeholder="Initials">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-screen-smartphone"></i></span>
+                            <input id="cell-input" type="telephone" class="form-control" placeholder="Cellular #">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-phone"></i></span>
+                            <input id="contact-input" type="telephone" class="form-control" placeholder="Contact #">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-graduation"></i></span>
+                            <input id="class-input" type="input" class="form-control" placeholder="Classification">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-badge"></i></span>
+                            <input id="title-input" type="text" class="form-control" placeholder="Job Title">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-briefcase"></i></span>
+                            <input id="employee-input" type="text" class="form-control" placeholder="Employee ID #">
+                        </div>
+                        
+                        <div class="input-group mb-1">
+                            <span class="input-group-addon"><i class="icon-layers"></i></span>
+                            <textarea id="additional-input" type="textarea" class="form-control" placeholder=" Additional Information"></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-block btn-success disabled" id="button-create-company-profile">Save Company Info & Profile</button>
+                        
+                        <div class="progress" style="display:none">
+                            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                        </div>
+                        <div id="loading" class="sk-cube-grid" style="display:none">
+                            <div class="sk-cube sk-cube1"></div>
+                            <div class="sk-cube sk-cube2"></div>
+                            <div class="sk-cube sk-cube3"></div>
+                            <div class="sk-cube sk-cube4"></div>
+                            <div class="sk-cube sk-cube5"></div>
+                            <div class="sk-cube sk-cube6"></div>
+                            <div class="sk-cube sk-cube7"></div>
+                            <div class="sk-cube sk-cube8"></div>
+                            <div class="sk-cube sk-cube9"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/libs/tether.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/toastr.min.js"></script>
+    
+    
+        <!-- Sends User to Company Profile Setup when Account Succesfully is Created -->
+    <script> firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+      } else {
+        // No user is signed in.
+          toastr["warning"]("User Not Signed In");
+          window.location='/register.html';
+      }
+    });
+        
+    $(document).ready(function(){
+        $('input').keyup(companyProfileCheck);
+    });
+    </script>
+
+
+</body>
+
+</html>
